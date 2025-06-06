@@ -7,7 +7,7 @@ export class ApiKeyGuard implements CanActivate {
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
     const request = context.switchToHttp().getRequest();
-    const apiKey = request.headers['X-API-KEY'];
+    const apiKey = request.header('X-API-KEY');
 
     if (apiKey !== 'nest-is-awesome') {
       return false;
